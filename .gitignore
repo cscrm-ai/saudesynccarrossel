@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+.env*.local
+_opensquad/_browser_profile/
+.playwright-mcp/

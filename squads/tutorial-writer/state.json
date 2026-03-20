@@ -1,0 +1,15 @@
+{
+  "squad": "tutorial-writer",
+  "status": "running",
+  "step": { "current": 2, "total": 9, "label": "navegacao" },
+  "agents": [
+    { "id": "navi-navegador", "name": "Navi Navegador", "icon": "🌐", "status": "working", "deliverTo": "navigation-log.md", "desk": { "col": 1, "row": 1 } },
+    { "id": "pedro-passos", "name": "Pedro Passos", "icon": "👁️", "status": "idle", "deliverTo": null, "desk": { "col": 2, "row": 1 } },
+    { "id": "tico-tutorial", "name": "Tico Tutorial", "icon": "✍️", "status": "idle", "deliverTo": null, "desk": { "col": 1, "row": 2 } },
+    { "id": "wanda-web", "name": "Wanda Web", "icon": "🖥️", "status": "idle", "deliverTo": null, "desk": { "col": 2, "row": 2 } },
+    { "id": "sara-save", "name": "Sara Save", "icon": "💾", "status": "idle", "deliverTo": null, "desk": { "col": 1, "row": 3 } }
+  ],
+  "handoff": null,
+  "startedAt": "2026-03-18T15:45:00.000Z",
+  "updatedAt": "2026-03-18T15:50:00.000Z"
+}

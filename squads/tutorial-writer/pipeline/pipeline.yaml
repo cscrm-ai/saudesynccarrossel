@@ -1,0 +1,37 @@
+name: tutorial-writer
+version: "1.0.0"
+description: "Pipeline de produção de tutoriais interativos para o Saúde Sync"
+
+steps:
+  - name: selecionar-tutorial
+    file: steps/step-01-selecionar-tutorial.md
+    type: checkpoint
+  - name: navegacao
+    file: steps/step-02-navegacao.md
+    agent: navi-navegador
+    execution: subagent
+  - name: confirmar-passos
+    file: steps/step-03-confirmar-passos.md
+    type: checkpoint
+  - name: extracao-passos
+    file: steps/step-04-extracao-passos.md
+    agent: pedro-passos
+    execution: subagent
+  - name: criacao-conteudo
+    file: steps/step-05-criacao-conteudo.md
+    agent: tico-tutorial
+    execution: inline
+  - name: montagem-html
+    file: steps/step-06-montagem-html.md
+    agent: wanda-web
+    execution: inline
+  - name: aprovacao-conteudo
+    file: steps/step-07-aprovacao-conteudo.md
+    type: checkpoint
+  - name: salvar-tutorial
+    file: steps/step-08-salvar-tutorial.md
+    agent: sara-save
+    execution: inline
+  - name: aprovacao-final
+    file: steps/step-09-aprovacao-final.md
+    type: checkpoint

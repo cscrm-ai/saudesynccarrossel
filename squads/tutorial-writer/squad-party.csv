@@ -1,0 +1,6 @@
+id,name,title,icon,squad,execution,path
+navi-navegador,Navi Navegador,Browser Navigation Specialist,🌐,tutorial-writer,subagent,./agents/navi-navegador.agent.md
+pedro-passos,Pedro Passos,Screenshot Step Extractor,👁️,tutorial-writer,subagent,./agents/pedro-passos.agent.md
+tico-tutorial,Tico Tutorial,Tutorial Content Writer,✍️,tutorial-writer,inline,./agents/tico-tutorial.agent.md
+wanda-web,Wanda Web,Interactive HTML Builder,🖥️,tutorial-writer,inline,./agents/wanda-web.agent.md
+sara-save,Sara Save,File Organizer and Saver,💾,tutorial-writer,inline,./agents/sara-save.agent.md

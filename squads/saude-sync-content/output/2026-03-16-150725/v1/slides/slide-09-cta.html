@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Slide 09 — CTA + Disclaimer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1440px;
+    background-color: #1A3A8F;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 96px 60px 96px;
+    position: relative;
+  }
+
+  /* Bloco superior — CTA principal */
+  .top-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    justify-content: center;
+    max-width: 900px;
+  }
+
+  /* Acento verde — o círculo fecha com a capa */
+  .accent-bar {
+    width: 72px;
+    height: 6px;
+    background-color: #5BBB2F;
+    border-radius: 3px;
+    margin-bottom: 60px;
+  }
+
+  .headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 92px;
+    line-height: 1.1;
+    color: #FFFFFF;
+    letter-spacing: -1px;
+    margin-bottom: 52px;
+  }
+
+  .body-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.80);
+    margin-bottom: 72px;
+  }
+
+  /* Logotipo central maior — fechamento do ciclo */
+  .logo-central {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 0;
+  }
+
+  .logo-dot-large {
+    width: 28px;
+    height: 28px;
+    background-color: #5BBB2F;
+    border-radius: 50%;
+  }
+
+  .logo-text-large {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.80);
+    letter-spacing: 0.5px;
+  }
+
+  /* Disclaimer — rodapé com contraste garantido WCAG AA */
+  .disclaimer {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 32px;
+    text-align: center;
+  }
+
+  .disclaimer p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.6;
+    /* Branco com 65% opacidade — passa WCAG AA sobre azul #1A3A8F */
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .disclaimer strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Azul #1A3A8F — Fechamento / Credibilidade (retorno à cor da capa) -->
+    <div class="top-block">
+      <div class="accent-bar"></div>
+
+      <h1 class="headline">Salva.<br>Compartilha.<br>O acesso é gratuito.</h1>
+
+      <p class="body-text">
+        Se uma pessoa que você conhece<br>
+        está esperando uma chance assim —<br>
+        ela não deveria descobrir sozinha.
+      </p>
+
+      <!-- Logotipo central — maior que na capa -->
+      <div class="logo-central">
+        <div class="logo-dot-large"></div>
+        <span class="logo-text-large">Saúde Sync</span>
+      </div>
+    </div>
+
+    <!-- Disclaimer obrigatório — legível, mínimo 26px, contraste WCAG AA garantido -->
+    <div class="disclaimer">
+      <p>
+        Este conteúdo tem caráter informativo e não substitui avaliação<br>
+        de profissional de saúde mental habilitado.<br>
+        Em situações de crise, ligue <strong>188 (CVV — gratuito, 24h)</strong>.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

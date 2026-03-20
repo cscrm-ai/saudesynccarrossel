@@ -1,0 +1,8 @@
+id,name,title,icon,execution,on_demand,agent_file
+igor-ideia,Igor Ideia,Ideador de Ângulos,💡,inline,false,agents/igor-ideia/igor-ideia.agent.md
+leo-legenda,Leo Legenda,Copywriter,✍️,subagent,false,agents/leo-legenda/leo-legenda.agent.md
+carlos-carrossel,Carlos Carrossel,Criador de Carrosséis,📊,subagent,false,agents/carlos-carrossel/carlos-carrossel.agent.md
+carla-compliance,Carla Compliance,Revisora Regulatória,⚖️,inline,false,agents/carla-compliance/carla-compliance.agent.md
+daniela-design,Daniela Design,Designer Visual,🎨,inline,false,agents/daniela-design/daniela-design.agent.md
+bruna-broadcast,Bruna Broadcast,Publisher,📢,inline,false,agents/bruna-broadcast/bruna-broadcast.agent.md
+paulo-pauta,Paulo Pauta,Pesquisador de Pautas (sob demanda),🔍,subagent,true,agents/paulo-pauta/paulo-pauta.agent.md

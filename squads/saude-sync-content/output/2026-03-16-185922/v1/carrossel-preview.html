@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaúdeSync — Carrossel Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0A0E17;
+    --bg-card: #0D1420;
+    --blue: #00A3FF;
+    --blue-glow: rgba(0, 163, 255, 0.15);
+    --blue-dim: #0066AA;
+    --red: #FF4455;
+    --red-glow: rgba(255, 68, 85, 0.12);
+    --green: #00E08E;
+    --green-glow: rgba(0, 224, 142, 0.12);
+    --white: #F0F2F5;
+    --gray: #6B7A8D;
+    --gray-light: #9BA8B8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    text-align: center;
+    padding: 48px 24px 16px;
+  }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .header h1 span { color: var(--blue); }
+
+  .header p {
+    color: var(--gray);
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 24px 24px;
+    flex-wrap: wrap;
+  }
+
+  .nav-dot {
+    width: 32px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .nav-dot:hover { background: rgba(255,255,255,0.2); }
+  .nav-dot.active { background: var(--blue); width: 48px; }
+  .nav-dot.red.active { background: var(--red); }
+  .nav-dot.green.active { background: var(--green); }
+
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 24px;
+  }
+
+  .slide-wrapper {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .slide.active { display: flex; animation: fadeSlide 0.4s ease; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ─── LOGO WATERMARK ─── */
+  .logo-watermark {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.12;
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ─── SLIDE 1 — HOOK ─── */
+  .slide-1 {
+    background: linear-gradient(160deg, #0A0E17 0%, #111827 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .slide-1::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(0,163,255,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .slide-1 .ecg-line {
+    position: absolute;
+    bottom: 54px; left: 0; right: 0;
+    height: 50px;
+    opacity: 0.05;
+  }
+
+  .slide-1 .hook-main {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-1 .hook-main .highlight { color: var(--blue); }
+
+  .slide-1 .hook-sub {
+    margin-top: 24px;
+    font-size: 15px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-1 .hook-sub .arrow {
+    display: inline-block;
+    animation: swipeHint 1.5s ease infinite;
+  }
+
+  @keyframes swipeHint {
+    0%, 100% { transform: translateX(0); opacity: 0.5; }
+    50% { transform: translateX(6px); opacity: 1; }
+  }
+
+  /* ─── SLIDE 2 — DOR ─── */
+  .slide-2 {
+    background: linear-gradient(160deg, #0A0E17 0%, #150A0B 100%);
+    border: 1px solid rgba(255,68,85,0.1);
+    text-align: center;
+  }
+
+  .slide-2::before {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,68,85,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .slide-2 .thought-card {
+    background: rgba(255,68,85,0.07);
+    border: 1px solid rgba(255,68,85,0.18);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .slide-2 .quote-marks {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--red);
+    opacity: 0.5;
+    line-height: 1;
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .slide-2 .thought-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--white);
+  }
+
+  .slide-2 .support-text {
+    font-size: 15px;
+    color: var(--gray-light);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── SLIDE 3 — CONTEXTO ─── */
+  .slide-3 {
+    background: linear-gradient(160deg, #0A0E17 0%, #0F1523 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: left;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .slide-3 .context-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .slide-3 .context-title .accent { color: var(--blue); }
+
+  .slide-3 .timeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    margin: 20px 0 28px;
+  }
+
+  .slide-3 .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .slide-3 .timeline-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .slide-3 .timeline-icon.blue {
+    background: var(--blue-glow);
+    border: 1px solid rgba(0,163,255,0.25);
+  }
+
+  .slide-3 .timeline-icon.red {
+    background: var(--red-glow);
+    border: 1px solid rgba(255,68,85,0.2);
+  }
+
+  .slide-3 .timeline-label {
+    font-size: 10px;
+    color: var(--gray);
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .slide-3 .timeline-line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.15) 0px,
+      rgba(255,255,255,0.15) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+    margin-bottom: 20px;
+    margin-top: -6px;
+  }
+
+  .slide-3 .timeline-mid {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: -6px;
+  }
+
+  .slide-3 .timeline-mid-line {
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.12) 0px,
+      rgba(255,255,255,0.12) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+  }
+
+  .slide-3 .timeline-days {
+    position: absolute;
+    top: -14px;
+    font-size: 10px;
+    color: var(--gray);
+    background: #0F1523;
+    padding: 2px 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .slide-3 .support-text {
+    font-size: 15px;
+    color: var(--gray-light);
+    line-height: 1.6;
+    width: 100%;
+  }
+
+  /* ─── SLIDE 4 — VIRADA ─── */
+  .slide-4 {
+    background: linear-gradient(160deg, #0A1628 0%, #0D2847 60%, #0A1628 100%);
+    border: 1px solid rgba(0,163,255,0.15);
+  }
+
+  .slide-4::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,163,255,0.09) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .slide-4 .virada-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.35;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 28px;
+  }
+
+  .slide-4 .virada-text .blue { color: var(--blue); }
+
+  .slide-4 .feature-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-4 .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(0,163,255,0.07);
+    border: 1px solid rgba(0,163,255,0.12);
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .slide-4 .feature-icon { font-size: 18px; flex-shrink: 0; }
+
+  .slide-4 .feature-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* ─── SLIDE 5 — COMO USAR ─── */
+  .slide-5 {
+    background: linear-gradient(160deg, #0A0E17 0%, #0F1523 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    justify-content: flex-start;
+    padding-top: 60px;
+    align-items: flex-start;
+  }
+
+  .slide-5 .section-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .slide-5 .steps-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .slide-5 .steps-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .slide-5 .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    position: relative;
+  }
+
+  .slide-5 .step-row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 44px;
+    width: 1px;
+    height: calc(100% - 14px);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .slide-5 .step-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .slide-5 .step-num.s1 { background: rgba(0,163,255,0.2); color: var(--blue); border: 1px solid rgba(0,163,255,0.3); }
+  .slide-5 .step-num.s2 { background: rgba(0,224,142,0.15); color: var(--green); border: 1px solid rgba(0,224,142,0.25); }
+  .slide-5 .step-num.s3 { background: rgba(0,163,255,0.12); color: var(--blue); border: 1px solid rgba(0,163,255,0.2); }
+
+  .slide-5 .step-content { flex: 1; }
+
+  .slide-5 .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .slide-5 .step-desc {
+    font-size: 13px;
+    color: var(--gray-light);
+    line-height: 1.5;
+  }
+
+  /* ─── SLIDE 6 — DADO ─── */
+  .slide-6 {
+    background: linear-gradient(160deg, #0A0E17 0%, #150A0B 100%);
+    border: 1px solid rgba(255,68,85,0.1);
+    text-align: center;
+  }
+
+  .slide-6::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,68,85,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .slide-6 .big-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -3px;
+  }
+
+  .slide-6 .big-number .suffix {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .slide-6 .data-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 16px 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-6 .data-support {
+    font-size: 14px;
+    color: var(--gray-light);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── SLIDE 7 — BENEFÍCIO ─── */
+  .slide-7 {
+    background: linear-gradient(160deg, #050F0A 0%, #091A10 100%);
+    border: 1px solid rgba(0,224,142,0.1);
+  }
+
+  .slide-7::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,224,142,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .slide-7 .benefit-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-7 .benefit-title .green { color: var(--green); }
+
+  .slide-7 .benefit-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-7 .benefit-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(0,224,142,0.06);
+    border: 1px solid rgba(0,224,142,0.12);
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .slide-7 .benefit-card .b-icon { font-size: 20px; flex-shrink: 0; }
+
+  .slide-7 .benefit-card .b-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--gray-light);
+    line-height: 1.4;
+  }
+
+  .slide-7 .benefit-card .b-text strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ─── SLIDE 8 — PRÉ-CTA ─── */
+  .slide-8 {
+    background: #050709;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .slide-8 .central-quote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-8 .central-quote .line { display: block; margin-bottom: 8px; }
+  .slide-8 .central-quote .fade1 { color: var(--white); }
+  .slide-8 .central-quote .fade2 { color: var(--gray-light); }
+  .slide-8 .central-quote .fade3 { color: var(--green); }
+
+  /* ─── SLIDE 9 — CTA ─── */
+  .slide-9 {
+    background: linear-gradient(160deg, #0A1628 0%, #0D2847 60%, #0A1628 100%);
+    border: 1px solid rgba(0,163,255,0.2);
+  }
+
+  .slide-9::before {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,163,255,0.08) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+
+  .slide-9 .cta-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 12px;
+  }
+
+  .slide-9 .cta-text .dim { color: var(--gray); }
+  .slide-9 .cta-text .bright { color: var(--white); }
+
+  .slide-9 .cta-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-9 .cta-brand .sync {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .slide-9 .cta-action {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--gray);
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-9 .disclaimer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 10px;
+    color: var(--gray);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* ─── NAVIGATION ─── */
+  .nav-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .nav-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .nav-btn:hover { background: rgba(0,163,255,0.15); border-color: var(--blue); }
+  .nav-btn:disabled { opacity: 0.2; cursor: default; }
+  .nav-btn:disabled:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+
+  .slide-counter {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--gray);
+    padding-bottom: 40px;
+  }
+
+  .keyboard-hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    opacity: 0.5;
+    padding-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Carrossel <span>SaúdeSync</span></h1>
+  <p>Preview · 9 slides · Instagram Feed</p>
+</div>
+
+<div class="nav-bar" id="navBar"></div>
+
+<div class="carousel-container">
+  <div class="slide-wrapper">
+
+    <!-- ─── LOGO SVG (reutilizado em todos os slides via JS) ─── -->
+    <!-- Injetado dinamicamente em cada slide -->
+
+    <!-- SLIDE 1 — HOOK -->
+    <div class="slide slide-1" data-index="0">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ícone coração -->
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <!-- Curva S -->
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <!-- Seta crescimento -->
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Texto Saúde -->
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <!-- Texto Sync -->
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <!-- Seta após Sync -->
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <svg class="ecg-line" viewBox="0 0 400 50" fill="none">
+        <path d="M0,25 L70,25 L85,25 L95,8 L105,42 L115,4 L125,46 L135,25 L155,25 L400,25" stroke="white" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="hook-main">
+        Você não precisa<br>esperar a consulta para<br>saber como <span class="highlight">está.</span>
+      </div>
+      <div class="hook-sub">
+        Arraste e veja o que muda <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — DOR -->
+    <div class="slide slide-2" data-index="1">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="thought-card">
+        <span class="quote-marks">"</span>
+        <div class="thought-text">Será que minha pressão está alta agora?</div>
+      </div>
+      <p class="support-text">Essa pergunta fica na cabeça entre uma consulta e outra — e não tem resposta fácil.</p>
+    </div>
+
+    <!-- SLIDE 3 — CONTEXTO -->
+    <div class="slide slide-3" data-index="2">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="context-title">
+        A consulta dura <span class="accent">30 minutos.</span><br>
+        A vida continua por <span class="accent">30 dias.</span>
+      </div>
+      <div class="timeline">
+        <div class="timeline-node">
+          <div class="timeline-icon blue">🏥</div>
+          <div class="timeline-label">Consulta</div>
+        </div>
+        <div class="timeline-mid">
+          <div class="timeline-mid-line"></div>
+          <div class="timeline-days">30 dias</div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-icon red">🏠</div>
+          <div class="timeline-label">Sua vida</div>
+        </div>
+      </div>
+      <p class="support-text">O que acontece no intervalo importa tanto quanto o que o médico registra.</p>
+    </div>
+
+    <!-- SLIDE 4 — VIRADA -->
+    <div class="slide slide-4" data-index="3">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="virada-text">
+        O SaúdeSync <span class="blue">registra</span> o que acontece entre as consultas.
+      </div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-icon">💊</span>
+          <span class="feature-label">Adesão ao medicamento — dia a dia</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📊</span>
+          <span class="feature-label">Pressão, glicose e peso monitorados</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏃</span>
+          <span class="feature-label">Atividade física e sono registrados</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📋</span>
+          <span class="feature-label">Histórico completo para a próxima consulta</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — COMO USAR -->
+    <div class="slide slide-5" data-index="4">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="section-label">Como funciona</div>
+      <div class="steps-title">Em 3 passos, você acompanha tudo pelo celular.</div>
+      <div class="steps-list">
+        <div class="step-row">
+          <div class="step-num s1">1</div>
+          <div class="step-content">
+            <div class="step-title">Registre sua medição</div>
+            <div class="step-desc">Pressão, glicose, peso — em segundos, direto no app.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num s2">2</div>
+          <div class="step-content">
+            <div class="step-title">Veja seu histórico</div>
+            <div class="step-desc">Gráficos claros mostram sua evolução ao longo dos dias.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num s3">3</div>
+          <div class="step-content">
+            <div class="step-title">Compartilhe com seu médico</div>
+            <div class="step-desc">Na consulta, ele vê tudo que aconteceu — não só o momento.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — DADO DE IMPACTO -->
+    <div class="slide slide-6" data-index="5">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="big-number">7<span class="suffix"> em cada 10</span></div>
+      <div class="data-text">pacientes com hipertensão não percebem variações entre consultas.</div>
+      <div class="data-support">Variações que, registradas, ajudam o médico a personalizar melhor o seu acompanhamento.</div>
+    </div>
+
+    <!-- SLIDE 7 — BENEFÍCIO -->
+    <div class="slide slide-7" data-index="6">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="benefit-title">
+        Chegar na consulta com o <span class="green">histórico completo</span> muda tudo.
+      </div>
+      <div class="benefit-cards">
+        <div class="benefit-card">
+          <span class="b-icon">🩺</span>
+          <span class="b-text">Seu médico vê <strong>o que aconteceu nos últimos 30 dias</strong> — não só o momento da consulta.</span>
+        </div>
+        <div class="benefit-card">
+          <span class="b-icon">🎯</span>
+          <span class="b-text"><strong>Decisões mais precisas.</strong> Com dados reais, ajustes certeiros.</span>
+        </div>
+        <div class="benefit-card">
+          <span class="b-icon">🤝</span>
+          <span class="b-text"><strong>Cuidado compartilhado.</strong> Você e seu médico, alinhados.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 — PRÉ-CTA -->
+    <div class="slide slide-8" data-index="7">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="central-quote">
+        <span class="line fade1">A consulta acaba.</span>
+        <span class="line fade2">O cuidado</span>
+        <span class="line fade3">continua.</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 — CTA -->
+    <div class="slide slide-9" data-index="8">
+      <div class="logo-watermark">
+        <svg width="148" height="52" viewBox="0 0 148 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8C12 8 7 13 7 19C7 27 18 36 22 39C26 36 37 27 37 19C37 13 32 8 26 8C23.5 8 21.2 9.1 19.5 10.9C18.8 9.8 17.5 9 16 8.5" fill="white"/>
+          <path d="M16 16C16 14 18 13 20 13.5C22 14 23 15.5 22 17C21 18.5 17 19 17 21C17 23 19 24 21 23.5C23 23 24 21.5 23 20" stroke="#0A0E17" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M29 10L35 4M35 4H30M35 4V9" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="22" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Saúde</text>
+          <text x="44" y="40" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="16" fill="white">Sync</text>
+          <path d="M88 36L95 36M95 36L92 33M95 36L92 39" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cta-text">
+        <span class="dim">Não é sobre tecnologia.</span><br>
+        <span class="bright">É sobre cuidar<br>de você todos os dias.</span>
+      </div>
+      <div class="cta-brand">Saúde<span class="sync">Sync</span></div>
+      <div class="cta-action">📲 Link na bio · @app.saudesync</div>
+      <div class="disclaimer">Este conteúdo tem caráter informativo e não substitui avaliação de profissional de saúde habilitado. Dúvidas sobre sua saúde? Fale com seu médico.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="nav-arrows">
+  <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">←</button>
+  <button class="nav-btn" id="nextBtn" onclick="navigate(1)">→</button>
+</div>
+
+<div class="slide-counter" id="slideCounter">01 / 09</div>
+<div class="keyboard-hint">Use ← → ou clique nos indicadores</div>
+
+<script>
+  let current = 0;
+  const total = 9;
+  const slides = document.querySelectorAll('.slide');
+  // 0=white, 1-2=red, 3-5=blue, 6=green, 7=white, 8=blue
+  const dotColors = ['white','red','red','blue','blue','red','green','white','blue'];
+
+  function renderNav() {
+    const bar = document.getElementById('navBar');
+    bar.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot';
+      if (i === current) {
+        dot.classList.add('active');
+        dot.classList.add(dotColors[i]);
+        if (dotColors[i] === 'white') dot.style.background = 'var(--white)';
+        if (dotColors[i] === 'blue') dot.style.background = 'var(--blue)';
+      }
+      dot.onclick = () => goTo(i);
+      bar.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    current = index;
+    slides.forEach(s => s.classList.remove('active'));
+    slides[current].classList.add('active');
+    document.getElementById('slideCounter').textContent =
+      String(current + 1).padStart(2, '0') + ' / ' + total;
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === total - 1;
+    renderNav();
+  }
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next >= 0 && next < total) goTo(next);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+  });
+
+  goTo(0);
+</script>
+
+</body>
+</html>

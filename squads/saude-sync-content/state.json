@@ -1,0 +1,21 @@
+{
+  "squad": "saude-sync-content",
+  "status": "running",
+  "step": { "current": 8, "total": 9, "label": "step-08-checkpoint-visual" },
+  "agents": [
+    { "id": "igor-ideia",       "name": "Igor Ideia",       "icon": "💡", "status": "done",    "deliverTo": null, "desk": { "col": 1, "row": 1 } },
+    { "id": "leo-legenda",      "name": "Leo Legenda",      "icon": "✍️", "status": "done",    "deliverTo": null, "desk": { "col": 2, "row": 1 } },
+    { "id": "carlos-carrossel", "name": "Carlos Carrossel", "icon": "📊", "status": "done",    "deliverTo": null, "desk": { "col": 1, "row": 2 } },
+    { "id": "carla-compliance", "name": "Carla Compliance", "icon": "⚖️", "status": "done",    "deliverTo": null, "desk": { "col": 2, "row": 2 } },
+    { "id": "daniela-design",   "name": "Daniela Design",   "icon": "🎨", "status": "done",    "deliverTo": null, "desk": { "col": 1, "row": 3 } },
+    { "id": "bruna-broadcast",  "name": "Bruna Broadcast",  "icon": "📢", "status": "idle",    "deliverTo": null, "desk": { "col": 2, "row": 3 } }
+  ],
+  "handoff": {
+    "from": "daniela-design",
+    "to": "checkpoint",
+    "message": "8 slides renderizados em JPEG 1080x1440px. Prontos para aprovação visual.",
+    "completedAt": "2026-03-17T15:05:00Z"
+  },
+  "startedAt": "2026-03-17T14:44:29Z",
+  "updatedAt": "2026-03-17T15:05:00Z"
+}

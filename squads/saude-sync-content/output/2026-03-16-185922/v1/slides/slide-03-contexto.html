@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Slide 03 — Contexto / Empatia</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1440px;
+    background-color: #2BBFBF;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .container {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 80px 96px; position: relative;
+  }
+  .content { text-align: center; max-width: 900px; width: 100%; }
+  .slide-num {
+    font-family: 'Nunito Sans', sans-serif; font-size: 28px;
+    color: rgba(255,255,255,0.40); letter-spacing: 3px;
+    margin-bottom: 64px;
+  }
+  .headline {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 80px; line-height: 1.12;
+    color: #FFFFFF; letter-spacing: -0.5px;
+    margin-bottom: 52px;
+  }
+  /* Linha do tempo visual */
+  .timeline {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin-bottom: 52px; width: 100%;
+  }
+  .tl-icon {
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; flex-shrink: 0;
+  }
+  .tl-line {
+    flex: 1; height: 3px;
+    background: repeating-linear-gradient(to right, rgba(255,255,255,0.50) 0, rgba(255,255,255,0.50) 12px, transparent 12px, transparent 24px);
+  }
+  .tl-label {
+    font-family: 'Nunito Sans', sans-serif; font-weight: 500;
+    font-size: 26px; color: rgba(255,255,255,0.70);
+    text-align: center; margin-top: 12px;
+  }
+  .tl-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .body-text {
+    font-family: 'Nunito Sans', sans-serif; font-weight: 500;
+    font-size: 36px; line-height: 1.65;
+    color: #1A3A8F;
+  }
+  .logo {
+    position: absolute; bottom: 52px; right: 72px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-dot { width: 18px; height: 18px; background-color: #FFFFFF; border-radius: 50%; opacity: 0.6; }
+  .logo-text {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 26px; color: rgba(255,255,255,0.55);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="slide-num">03</div>
+      <h1 class="headline">A consulta dura 30 minutos.<br>A vida continua por 30 dias.</h1>
+      <div class="timeline">
+        <div class="tl-col">
+          <div class="tl-icon">🏥</div>
+          <span class="tl-label">consulta</span>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-col">
+          <div class="tl-icon">🏠</div>
+          <span class="tl-label">sua vida</span>
+        </div>
+      </div>
+      <p class="body-text">O que acontece no intervalo importa tanto quanto o que o médico registra.</p>
+    </div>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <span class="logo-text">Saúde Sync</span>
+    </div>
+  </div>
+</body>
+</html>

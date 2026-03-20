@@ -1,0 +1,59 @@
+pipeline:
+  name: saude-sync-content-pipeline
+  version: "2.0.0"
+  description: >
+    Pipeline do squad saude-sync-content v2. Parte de um tema definido por Caio
+    sobre o Saúde Sync e produz carrossel Instagram Feed com compliance regulatório.
+    Foco: paciente como protagonista, tom warm e direto, sem vídeo.
+
+  steps:
+    - id: step-01
+      file: pipeline/steps/step-01-checkpoint-tema.md
+      type: checkpoint
+      description: Caio define o tema do carrossel
+
+    - id: step-02
+      file: pipeline/steps/step-02-igor-ideia.md
+      type: agent
+      agent: igor-ideia
+      description: Gerar 3 ângulos para o tema (paciente / profissional / curiosidade)
+
+    - id: step-03
+      file: pipeline/steps/step-03-checkpoint-angulo.md
+      type: checkpoint
+      description: Caio seleciona o ângulo criativo
+
+    - id: step-04
+      file: pipeline/steps/step-04-leo-legenda.md
+      type: agent
+      agent: leo-legenda
+      description: Criar caption, gancho do slide 1 e hashtags
+
+    - id: step-05
+      file: pipeline/steps/step-05-carlos-carrossel.md
+      type: agent
+      agent: carlos-carrossel
+      description: Criar estrutura completa dos slides do carrossel
+
+    - id: step-06
+      file: pipeline/steps/step-06-carla-compliance.md
+      type: agent
+      agent: carla-compliance
+      description: Verificar compliance regulatório
+
+    - id: step-07
+      file: pipeline/steps/step-07-daniela-design.md
+      type: agent
+      agent: daniela-design
+      description: Criar e renderizar imagens HTML/CSS dos slides
+
+    - id: step-08
+      file: pipeline/steps/step-08-checkpoint-visual.md
+      type: checkpoint
+      description: Caio aprova o visual antes da publicação
+
+    - id: step-09
+      file: pipeline/steps/step-09-bruna-broadcast.md
+      type: agent
+      agent: bruna-broadcast
+      description: Preparar assets e publicar no @app.saudesync

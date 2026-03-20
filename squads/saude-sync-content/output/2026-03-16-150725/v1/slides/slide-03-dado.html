@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Slide 03 — Dado de realidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1440px;
+    background-color: #1A3A8F;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Linha verde no topo — metáfora visual de "algo está mudando" */
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, #5BBB2F 45%, rgba(91, 187, 47, 0.15) 100%);
+  }
+
+  .container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 96px;
+    position: relative;
+  }
+
+  .content {
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .slide-number {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 2px;
+    margin-bottom: 72px;
+  }
+
+  .headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 1.12;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    margin-bottom: 56px;
+  }
+
+  /* Número de destaque — tratamento tipográfico */
+  .headline .number-highlight {
+    font-size: 104px;
+    color: #5BBB2F;
+    display: block;
+    line-height: 1.0;
+    margin-bottom: 12px;
+  }
+
+  .divider {
+    width: 56px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    margin: 0 auto 52px auto;
+  }
+
+  .body-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.80);
+  }
+
+  /* Logotipo no rodapé */
+  .logo {
+    position: absolute;
+    bottom: 52px;
+    right: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-dot {
+    width: 18px;
+    height: 18px;
+    background-color: #5BBB2F;
+    border-radius: 50%;
+  }
+
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.50);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+  <!-- Linha verde no topo — algo está mudando -->
+  <div class="progress-bar"></div>
+
+  <div class="container">
+    <div class="content">
+      <!-- Azul #1A3A8F — Realidade / Dado frio -->
+      <div class="slide-number">03</div>
+
+      <h1 class="headline">
+        <span class="number-highlight">23 milhões</span>
+        de brasileiras precisam de apoio.<br>Pouquíssimas conseguem.
+      </h1>
+
+      <div class="divider"></div>
+
+      <p class="body-text">
+        Menos de 4% da população acessa<br>
+        serviços de saúde mental pelo SUS.<br><br>
+        Para mulheres em situação de violência,<br>
+        as barreiras são ainda maiores —<br>
+        geográficas, financeiras e emocionais.
+      </p>
+    </div>
+
+    <!-- Logotipo -->
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <span class="logo-text">Saúde Sync</span>
+    </div>
+  </div>
+</body>
+</html>

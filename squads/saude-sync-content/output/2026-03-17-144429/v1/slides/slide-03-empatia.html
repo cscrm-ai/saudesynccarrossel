@@ -1,0 +1,78 @@
+<!-- Contraste: #F0F2F5 sobre #0A0E17 ≈ 15:1 ✓ WCAG AA -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0E17; --bg2: #0D1420;
+      --blue: #00A3FF; --blue-g: rgba(0,163,255,0.13);
+      --red: #FF4455; --red-g: rgba(255,68,85,0.11);
+      --green: #00E08E; --green-g: rgba(0,224,142,0.11);
+      --gold: #F5B800; --gold-g: rgba(245,184,0,0.11);
+      --white: #F0F2F5; --gray: #6B7A8D; --gray-l: #9BA8B8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1080px; height: 1440px;
+      background: #050709;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 290px 80px 60px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--white);
+    }
+    .content {
+      position: relative; z-index: 20;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0 90px; text-align: center; gap: 56px;
+    }
+    .question {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 92px;
+      line-height: 1.1; letter-spacing: -2px;
+      color: var(--white);
+    }
+    .quote-block {
+      background: rgba(255,255,255,0.04);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 16px 16px 0;
+      padding: 36px 48px;
+      text-align: left;
+      max-width: 900px;
+    }
+    .quote-text {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 46px;
+      line-height: 1.4; color: var(--gold);
+      font-style: italic;
+    }
+    .body-text {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 42px;
+      line-height: 1.5; color: var(--gray-l);
+      max-width: 900px;
+    }
+    .body-text strong { color: var(--white); }
+  </style>
+</head>
+<body>
+  <!-- LOGO WATERMARK — NÃO REMOVER -->
+  <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;">
+    <img src="saudesync-logo.png" style="width:420px;mix-blend-mode:screen;opacity:0.12;display:block;">
+  </div>
+
+  <div class="content">
+    <h2 class="question">Você já se sentiu assim?</h2>
+    <div class="quote-block">
+      <p class="quote-text">"Hoje eu pulo, amanhã eu tomo dois."</p>
+    </div>
+    <p class="body-text">Essa frase já passou pela cabeça de muita gente. Manter uma rotina de saúde todos os dias é desafiador — e <strong>reconhecer isso é o primeiro passo.</strong></p>
+  </div>
+</body>
+</html>

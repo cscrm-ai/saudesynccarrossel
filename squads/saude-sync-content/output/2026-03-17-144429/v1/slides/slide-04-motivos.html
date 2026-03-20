@@ -1,0 +1,100 @@
+<!-- Contraste: #F0F2F5 sobre #0A0E17 ≈ 15:1 ✓ WCAG AA -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0E17; --bg2: #0D1420;
+      --blue: #00A3FF; --blue-g: rgba(0,163,255,0.13);
+      --red: #FF4455; --red-g: rgba(255,68,85,0.11);
+      --green: #00E08E; --green-g: rgba(0,224,142,0.11);
+      --gold: #F5B800; --gold-g: rgba(245,184,0,0.11);
+      --white: #F0F2F5; --gray: #6B7A8D; --gray-l: #9BA8B8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1080px; height: 1440px;
+      background: linear-gradient(155deg, #0A0E17 0%, #0D1420 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--white);
+      padding: 290px 80px 80px;
+    }
+    .content {
+      position: relative; z-index: 20;
+      display: flex; flex-direction: column;
+      width: 100%; gap: 44px;
+    }
+    .headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 88px;
+      line-height: 1.1; letter-spacing: -2px;
+      color: var(--white); text-align: center;
+      margin-bottom: 8px;
+    }
+    .items {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .item {
+      display: flex; align-items: center; gap: 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 30px 40px;
+    }
+    .item-icon {
+      font-size: 52px; flex-shrink: 0;
+    }
+    .item-text {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 40px;
+      line-height: 1.3; color: var(--white);
+    }
+    .footer-note {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 38px;
+      color: var(--green); text-align: center;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- LOGO WATERMARK — NÃO REMOVER -->
+  <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;">
+    <img src="saudesync-logo.png" style="width:420px;mix-blend-mode:screen;opacity:0.12;display:block;">
+  </div>
+
+  <div class="content">
+    <h2 class="headline">Por que isso acontece?</h2>
+    <div class="items">
+      <div class="item">
+        <span class="item-icon">🧠</span>
+        <span class="item-text">Esquecimento no dia a dia</span>
+      </div>
+      <div class="item">
+        <span class="item-icon">😣</span>
+        <span class="item-text">Efeitos colaterais não esperados</span>
+      </div>
+      <div class="item">
+        <span class="item-icon">💰</span>
+        <span class="item-text">Custo do tratamento contínuo</span>
+      </div>
+      <div class="item">
+        <span class="item-icon">🙂</span>
+        <span class="item-text">"Já estou me sentindo melhor"</span>
+      </div>
+      <div class="item">
+        <span class="item-icon">🏥</span>
+        <span class="item-text">Dificuldade de acesso à farmácia ou ao médico</span>
+      </div>
+    </div>
+    <p class="footer-note">Nenhum desses motivos é frescura. Todos merecem atenção.</p>
+  </div>
+</body>
+</html>

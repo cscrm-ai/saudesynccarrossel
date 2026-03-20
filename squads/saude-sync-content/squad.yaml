@@ -1,0 +1,84 @@
+squad:
+  name: saude-sync-content
+  description: >
+    Produz carrosséis para o Instagram (@app.saudesync) sobre o Saúde Sync —
+    seus recursos, benefícios e educação em saúde — voltados para pacientes e
+    profissionais da saúde. Foco total em carrossel para Instagram Feed.
+  version: "2.0.0"
+  created: "2026-03-13"
+  updated: "2026-03-16"
+  mission: >
+    Transformar temas do Saúde Sync em carrosséis de alto engajamento para
+    pacientes e profissionais, com o paciente sempre como protagonista,
+    fortalecendo o posicionamento de "continuidade de cuidado" com segurança regulatória.
+
+  skills:
+    - web_search
+    - web_fetch
+    - image-creator
+    - instagram-publisher
+
+  data_files:
+    - pipeline/data/tone-of-voice.md
+    - pipeline/data/domain-framework.md
+    - pipeline/data/quality-criteria.md
+    - pipeline/data/anti-patterns.md
+    - pipeline/data/output-examples.md
+    - pipeline/data/research-brief.md
+
+  agents:
+    # Agentes ativos — pipeline principal
+    - id: igor-ideia
+      file: agents/igor-ideia/igor-ideia.agent.md
+      execution: inline
+      tasks:
+        - agents/igor-ideia/tasks/generate-angles.md
+
+    - id: leo-legenda
+      file: agents/leo-legenda/leo-legenda.agent.md
+      execution: subagent
+      tasks:
+        - agents/leo-legenda/tasks/create-copy.md
+
+    - id: carlos-carrossel
+      file: agents/carlos-carrossel/carlos-carrossel.agent.md
+      execution: subagent
+      tasks:
+        - agents/carlos-carrossel/tasks/create-instagram-feed.md
+        - agents/carlos-carrossel/tasks/optimize-instagram-feed.md
+
+    - id: carla-compliance
+      file: agents/carla-compliance/carla-compliance.agent.md
+      execution: inline
+      tasks:
+        - agents/carla-compliance/tasks/check-claims.md
+
+    - id: daniela-design
+      file: agents/daniela-design/daniela-design.agent.md
+      execution: inline
+      tasks:
+        - agents/daniela-design/tasks/design-slides.md
+        - agents/daniela-design/tasks/render-images.md
+
+    - id: bruna-broadcast
+      file: agents/bruna-broadcast/bruna-broadcast.agent.md
+      execution: inline
+      tasks:
+        - agents/bruna-broadcast/tasks/prepare-assets.md
+        - agents/bruna-broadcast/tasks/publish-platforms.md
+
+    # Agente sob demanda — não faz parte do pipeline padrão
+    - id: paulo-pauta
+      file: agents/paulo-pauta/paulo-pauta.agent.md
+      execution: subagent
+      on_demand: true
+      tasks:
+        - agents/paulo-pauta/tasks/find-news.md
+        - agents/paulo-pauta/tasks/rank-stories.md
+
+  pipeline:
+    entry: pipeline/pipeline.yaml
+    steps_dir: pipeline/steps/
+    data_dir: pipeline/data/
+    output_dir: output/
+    memory_file: _memory/memories.md

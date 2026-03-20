@@ -1,0 +1,36 @@
+name: tutorial-writer
+title: "Tutorial Writer — Saúde Sync"
+description: >
+  Squad que acessa o Saúde Sync de forma autônoma, navega pelos fluxos, captura
+  screenshots de cada passo e transforma tudo em tutoriais interativos organizados
+  por público (médicos e pacientes), salvos localmente como páginas HTML.
+version: "1.0.0"
+created: "2026-03-18"
+performance_mode: alta-performance
+
+skills:
+  - web_search
+  - web_fetch
+  - playwright
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+
+pipeline:
+  entry: pipeline/pipeline.yaml
+
+agents:
+  - id: navi-navegador
+    path: ./agents/navi-navegador.agent.md
+  - id: pedro-passos
+    path: ./agents/pedro-passos.agent.md
+  - id: tico-tutorial
+    path: ./agents/tico-tutorial.agent.md
+  - id: wanda-web
+    path: ./agents/wanda-web.agent.md
+  - id: sara-save
+    path: ./agents/sara-save.agent.md
