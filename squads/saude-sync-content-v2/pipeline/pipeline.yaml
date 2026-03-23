@@ -1,0 +1,63 @@
+pipeline:
+  name: saude-sync-content-v2-pipeline
+  version: "2.0.0"
+  description: >
+    Pipeline otimizado do squad saude-sync-content-v2. 10 steps, 8 agentes.
+    Opus para criativos, Sonnet para mecânicos. ~$4-5/run.
+
+  steps:
+    - id: step-01
+      file: pipeline/steps/step-01-paulo-pauta.md
+      type: agent
+      agent: paulo-pauta
+      description: Ler docs internos, extrair tópicos e propor 3-5 pautas rankeadas
+
+    - id: step-02
+      file: pipeline/steps/step-02-checkpoint-pauta.md
+      type: checkpoint
+      description: Caio seleciona 1 pauta e o ângulo criativo
+
+    - id: step-03
+      file: pipeline/steps/step-03-igor-ideia.md
+      type: agent
+      agent: igor-ideia
+      description: Gerar 5 ângulos distintos para a pauta selecionada
+
+    - id: step-04
+      file: pipeline/steps/step-04-checkpoint-angulo.md
+      type: checkpoint
+      description: Caio seleciona o ângulo criativo e tom
+
+    - id: step-05
+      file: pipeline/steps/step-05-leo-carrossel.md
+      type: agent
+      agent: leo-carrossel
+      description: Criar copy completo + roteiro de 10 slides com briefing visual
+
+    - id: step-06
+      file: pipeline/steps/step-06-checkpoint-conteudo.md
+      type: checkpoint
+      description: Caio aprova o conteúdo textual + roteiro antes de produção visual
+
+    - id: step-07
+      file: pipeline/steps/step-07-victor-compliance.md
+      type: agent
+      agent: victor-compliance
+      description: Compliance regulatório + scoring de qualidade (6 dimensões)
+
+    - id: step-08
+      file: pipeline/steps/step-08-visual.md
+      type: agent
+      agent: visual
+      description: Gerar todas as imagens via Imagen 4.0 (backgrounds, fotos, ícones)
+
+    - id: step-09
+      file: pipeline/steps/step-09-daniela-design.md
+      type: agent
+      agent: daniela-design
+      description: Montar slides HTML/CSS com imagens geradas e renderizar JPEGs
+
+    - id: step-10
+      file: pipeline/steps/step-10-checkpoint-final.md
+      type: checkpoint
+      description: Caio aprova visual + publicação final

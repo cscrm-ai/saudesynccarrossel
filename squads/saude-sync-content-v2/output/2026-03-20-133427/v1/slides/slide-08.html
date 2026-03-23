@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  background: #0A0E17; color: #F0F2F5;
+  position: relative;
+}
+.content {
+  padding: 72px 64px;
+  display: flex; flex-direction: column;
+  height: 100%;
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.12;
+  margin-bottom: 32px;
+}
+.body-text {
+  font-size: 40px; line-height: 1.65;
+  margin-bottom: 56px;
+  color: #6B7A8D;
+}
+.cards-area {
+  flex: 1; display: flex; flex-direction: column;
+  gap: 28px; justify-content: center;
+}
+.proof-card {
+  background: #0D1420; border-radius: 20px;
+  padding: 36px 40px;
+  display: flex; align-items: center; gap: 28px;
+  border-left: 5px solid;
+}
+.proof-card:nth-child(1) { border-color: #00A3FF; }
+.proof-card:nth-child(2) { border-color: #00E08E; }
+.proof-card:nth-child(3) { border-color: #F5B800; }
+.card-icon {
+  width: 72px; height: 72px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.proof-card:nth-child(1) .card-icon { background: rgba(0,163,255,0.12); }
+.proof-card:nth-child(2) .card-icon { background: rgba(0,224,142,0.12); }
+.proof-card:nth-child(3) .card-icon { background: rgba(245,184,0,0.12); }
+.card-icon svg { width: 36px; height: 36px; }
+.card-text {
+  font-size: 36px; line-height: 1.45;
+}
+.card-text strong {
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+}
+.proof-card:nth-child(1) .card-text strong { color: #00A3FF; }
+.proof-card:nth-child(2) .card-text strong { color: #00E08E; }
+.proof-card:nth-child(3) .card-text strong { color: #F5B800; }
+.bg-icon {
+  position: absolute; right: 32px; bottom: 32px;
+  width: 200px; height: 200px; opacity: 0.08;
+  background: url('../generated-images/icaro-icone/slide-08-icaro.png') center center / contain no-repeat;
+}
+</style>
+</head>
+<body>
+<div class="content">
+  <h1>Resultados reais. Todo dia.</h1>
+  <div class="body-text">
+    Milhares de pacientes monitorados.<br>
+    Acompanhamento que faz diferença na rotina.<br>
+    Médicos com dados reais para decidir.
+  </div>
+  <div class="cards-area">
+    <div class="proof-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="card-text"><strong>Monitoramento diário</strong><br>Sinais vitais acompanhados 24/7</div>
+    </div>
+    <div class="proof-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00E08E" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="card-text"><strong>Prevenção ativa</strong><br>Alertas antes que o problema cresça</div>
+    </div>
+    <div class="proof-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F5B800" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="card-text"><strong>Time conectado</strong><br>Médico e paciente no mesmo canal</div>
+    </div>
+  </div>
+</div>
+<div class="bg-icon"></div>
+</body>
+</html>

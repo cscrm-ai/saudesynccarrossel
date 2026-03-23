@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px;
+  height: 1350px;
+  background: #0A0E17;
+  overflow: hidden;
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+}
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 64px;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin-top: 48px;
+}
+.headline .highlight {
+  color: #00E08E;
+}
+.body-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  color: #C0C7D4;
+  margin-top: 32px;
+  line-height: 1.5;
+}
+.body-text .time {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 36px;
+  color: #00A3FF;
+}
+.body-text .bold-green {
+  font-weight: 700;
+  color: #00E08E;
+}
+/* Timeline */
+.timeline {
+  margin-top: 48px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+  padding: 0 16px;
+}
+.timeline-line {
+  position: absolute;
+  top: 44px;
+  left: 80px;
+  right: 80px;
+  height: 3px;
+  background: repeating-linear-gradient(to right, #00A3FF 0px, #00A3FF 8px, transparent 8px, transparent 16px);
+}
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.step-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+  border: 3px solid;
+}
+.step-1 .step-circle { background: rgba(0,163,255,0.15); border-color: #00A3FF; color: #00A3FF; }
+.step-2 .step-circle { background: rgba(245,184,0,0.15); border-color: #F5B800; color: #F5B800; }
+.step-3 .step-circle { background: rgba(0,224,142,0.15); border-color: #00E08E; color: #00E08E; }
+.step-card {
+  background: #0D1420;
+  border-radius: 16px;
+  padding: 24px 20px;
+  width: 280px;
+  border: 1px solid #1C2333;
+  text-align: center;
+}
+.step-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #F0F2F5;
+  margin-bottom: 8px;
+}
+.step-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #6B7A8D;
+  line-height: 1.35;
+}
+.step-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 18px;
+  color: #6B7A8D;
+  margin-bottom: 8px;
+}
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="headline">Na prática,<br><span class="highlight">funciona assim</span>:</div>
+    <div class="body-text"><span class="time">Segunda-feira, 8h:</span> você abre o Saúde Sync. O painel mostra: "3 pacientes com alteração significativa essa semana." Você clica. Vê o gráfico. Manda uma mensagem pelo chat. Intervenção feita. Sem emergência. Sem surpresa.<br><br>Isso é <span class="bold-green">medicina preventiva de verdade</span>.</div>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="step step-1">
+        <div class="step-number">01</div>
+        <div class="step-circle">&#128202;</div>
+        <div class="step-card">
+          <div class="step-title">Dashboard</div>
+          <div class="step-desc">Abre o painel e vê os alertas de alteração significativa</div>
+        </div>
+      </div>
+      <div class="step step-2">
+        <div class="step-number">02</div>
+        <div class="step-circle">&#128200;</div>
+        <div class="step-card">
+          <div class="step-title">Gráfico</div>
+          <div class="step-desc">Analisa a tendência de pressão com seta subindo</div>
+        </div>
+      </div>
+      <div class="step step-3">
+        <div class="step-number">03</div>
+        <div class="step-circle">&#10003;</div>
+        <div class="step-card">
+          <div class="step-title">Intervenção</div>
+          <div class="step-desc">Envia mensagem pelo chat seguro e resolve antes da crise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 80px;
+  padding-top: 300px;
+  position: relative;
+}
+.bg-image {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.15;
+}
+.overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10,14,23,0.85);
+}
+.content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.quote-mark {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 200px; color: #FF4455; opacity: 0.3; line-height: 0.7;
+  margin-bottom: -30px;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 82px; line-height: 1.1; text-align: center;
+  max-width: 880px; margin-bottom: 60px; font-style: italic;
+}
+.stat {
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 140px; color: #FF4455; margin-bottom: 30px;
+}
+.body-text {
+  font-size: 38px; color: rgba(255,255,255,0.6); text-align: center;
+  max-width: 780px; line-height: 1.55;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <img class="bg-image" src="generated-images/slide-03-background.png" alt="background">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="quote-mark">&ldquo;</div>
+    <h1 class="headline">"Estou tomando direitinho, doutor."</h1>
+    <div class="stat">42%</div>
+    <p class="body-text">Estudos apontam que cerca de 42% dos pacientes crônicos não aderem ao tratamento conforme prescrito. E a maioria não percebe.</p>
+  </div>
+</body>
+</html>

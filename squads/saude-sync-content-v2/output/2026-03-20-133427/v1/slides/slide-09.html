@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  background: linear-gradient(180deg, #0D1420 0%, #061A2E 100%);
+  color: #F0F2F5; position: relative;
+}
+.content {
+  padding: 72px 64px;
+  display: flex; flex-direction: column;
+  height: 100%;
+  position: relative; z-index: 2;
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.12;
+  margin-bottom: 40px;
+}
+h1 .red { color: #FF4455; }
+.body-text {
+  font-size: 44px; line-height: 1.65;
+  margin-bottom: 48px;
+}
+.img-area {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+}
+.persona-img {
+  width: 500px; height: 500px;
+  background: url('../generated-images/pedro-persona/slide-09-pedro.png') center center / contain no-repeat;
+  border-radius: 24px;
+  filter: brightness(0.95);
+}
+</style>
+</head>
+<body>
+<div class="content">
+  <h1>Você não precisa enfrentar isso <span class="red">sozinho.</span></h1>
+  <div class="body-text">
+    Sua saúde merece atenção<br>
+    todos os dias —<br>
+    não só na sala do médico.
+  </div>
+  <div class="img-area">
+    <div class="persona-img"></div>
+  </div>
+</div>
+</body>
+</html>

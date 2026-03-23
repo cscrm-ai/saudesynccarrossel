@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  background: #0D1420; color: #F0F2F5;
+  position: relative;
+}
+.content {
+  position: relative; z-index: 2;
+  padding: 72px 64px;
+  display: flex; flex-direction: column;
+  height: 100%; width: 70%;
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.12;
+  margin-bottom: 56px;
+}
+.body-text { font-size: 40px; line-height: 1.6; }
+.body-text .bullet { color: #FF4455; margin-right: 12px; }
+.body-text .line { margin-bottom: 16px; display: flex; align-items: baseline; }
+.body-text .longe { color: #FF4455; font-style: italic; }
+.img-right {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 30%; height: 70%;
+  background: url('../generated-images/icaro-icone/slide-02-icaro.png') center center / contain no-repeat;
+  opacity: 0.85;
+}
+</style>
+</head>
+<body>
+<div class="content">
+  <h1>3 meses de espera. Muita coisa pode mudar.</h1>
+  <div class="body-text">
+    <div class="line"><span class="bullet">&#9679;</span> Pressão subindo.</div>
+    <div class="line"><span class="bullet">&#9679;</span> Peso oscilando.</div>
+    <div class="line"><span class="bullet">&#9679;</span> Sintomas surgindo.</div>
+    <div class="line"><span class="bullet">&#9679;</span> E o próximo retorno ainda está <span class="longe">longe.</span></div>
+  </div>
+</div>
+<div class="img-right"></div>
+</body>
+</html>

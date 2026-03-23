@@ -1,0 +1,8 @@
+id,name,title,icon,execution,model_tier,on_demand,agent_file
+paulo-pauta,Paulo Pauta,Analisador de Conteúdo Interno,🔍,subagent,powerful,false,agents/paulo-pauta/paulo-pauta.agent.md
+igor-ideia,Igor Ideia,Ideador de Ângulos,💡,subagent,powerful,false,agents/igor-ideia/igor-ideia.agent.md
+leo-carrossel,Leo Carrossel,Copywriter & Roteirista,✍️,subagent,powerful,false,agents/leo-carrossel/leo-carrossel.agent.md
+victor-compliance,Victor Compliance,Revisor & Compliance,⚖️,subagent,fast,false,agents/victor-compliance/victor-compliance.agent.md
+visual,Visual,Gerador de Imagens,🖼️,subagent,fast,false,agents/visual/visual.agent.md
+daniela-design,Daniela Design,Designer Visual,🎨,subagent,powerful,false,agents/daniela-design/daniela-design.agent.md
+bruna-analytics,Bruna Analytics,Publisher & Analista,📢,inline,fast,false,agents/bruna-analytics/bruna-analytics.agent.md

@@ -1,0 +1,24 @@
+{
+  "squad": "saude-sync-content-v2",
+  "status": "running",
+  "run_id": "2026-03-23-130500",
+  "interaction_channel": "telegram",
+  "step": { "current": 1, "total": 16, "label": "step-01-paulo-pauta" },
+  "agents": [
+    { "id": "paulo-pauta", "name": "Paulo Pauta", "icon": "🔍", "status": "working", "desk": { "col": 1, "row": 1 } },
+    { "id": "igor-ideia", "name": "Igor Ideia", "icon": "💡", "status": "idle", "desk": { "col": 2, "row": 1 } },
+    { "id": "leo-legenda", "name": "Leo Legenda", "icon": "✍️", "status": "idle", "desk": { "col": 1, "row": 2 } },
+    { "id": "carlos-carrossel", "name": "Carlos Carrossel", "icon": "📊", "status": "idle", "desk": { "col": 2, "row": 2 } },
+    { "id": "carla-compliance", "name": "Carla Compliance", "icon": "⚖️", "status": "idle", "desk": { "col": 1, "row": 3 } },
+    { "id": "marco-mapa-visual", "name": "Marco Mapa Visual", "icon": "🗺️", "status": "idle", "desk": { "col": 2, "row": 3 } },
+    { "id": "isa-ilustra", "name": "Isa Ilustra", "icon": "🖼️", "status": "idle", "desk": { "col": 1, "row": 4 } },
+    { "id": "pedro-persona", "name": "Pedro Persona", "icon": "👤", "status": "idle", "desk": { "col": 2, "row": 4 } },
+    { "id": "icaro-icone", "name": "Ícaro Ícone", "icon": "🔷", "status": "idle", "desk": { "col": 1, "row": 5 } },
+    { "id": "bruno-base", "name": "Bruno Base", "icon": "🌅", "status": "idle", "desk": { "col": 2, "row": 5 } },
+    { "id": "daniela-design", "name": "Daniela Design", "icon": "🎨", "status": "idle", "desk": { "col": 1, "row": 6 } },
+    { "id": "victor-veredicto", "name": "Victor Veredicto", "icon": "✅", "status": "idle", "desk": { "col": 2, "row": 6 } },
+    { "id": "bruna-broadcast", "name": "Bruna Broadcast", "icon": "📢", "status": "idle", "desk": { "col": 1, "row": 7 } },
+    { "id": "ana-analytics", "name": "Ana Analytics", "icon": "📊", "status": "idle", "desk": { "col": 2, "row": 7 } }
+  ],
+  "startedAt": "2026-03-23T13:05:00-03:00"
+}

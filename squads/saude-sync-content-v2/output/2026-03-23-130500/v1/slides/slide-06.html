@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px;
+  height: 1350px;
+  background: #0A0E17;
+  overflow: hidden;
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+}
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 64px;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 88px;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin-top: 40px;
+}
+.headline .highlight {
+  color: #00A3FF;
+}
+.body-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 38px;
+  color: #C0C7D4;
+  margin-top: 28px;
+  line-height: 1.45;
+}
+/* Dashboard mockup */
+.dashboard {
+  margin-top: 40px;
+  background: #0D1420;
+  border: 2px solid rgba(0,163,255,0.3);
+  border-radius: 20px;
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dash-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #00A3FF;
+}
+.dash-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 20px;
+  color: #6B7A8D;
+}
+.charts-row {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+.chart-card {
+  flex: 1;
+  background: #0A0E17;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #1C2333;
+}
+.chart-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #6B7A8D;
+  margin-bottom: 8px;
+}
+.chart-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.chart-value.blue { color: #00A3FF; }
+.chart-value.green { color: #00E08E; }
+.chart-svg {
+  width: 100%;
+  height: 120px;
+}
+.metrics-row {
+  display: flex;
+  gap: 16px;
+}
+.metric-card {
+  flex: 1;
+  background: #0A0E17;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid #1C2333;
+  text-align: center;
+}
+.metric-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #6B7A8D;
+  margin-bottom: 6px;
+}
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 28px;
+}
+.metric-value.red { color: #FF4455; }
+.metric-value.green { color: #00E08E; }
+.metric-value.gold { color: #F5B800; }
+.metric-value.blue { color: #00A3FF; }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="headline"><span class="highlight">Saúde Sync</span> monitora<br>seus pacientes por você.</div>
+    <div class="body-text">Pressão, glicose, peso, frequência cardíaca — tudo visível pra você em tempo real.</div>
+    <div class="dashboard">
+      <div class="dash-header">
+        <span class="dash-title">Dashboard Clínico</span>
+        <span class="dash-period">Mar 2026 | Semanal</span>
+      </div>
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-label">Pressão Arterial (mmHg)</div>
+          <div class="chart-value blue">128/82</div>
+          <svg class="chart-svg" viewBox="0 0 400 120">
+            <polyline points="0,80 50,75 100,85 150,60 200,70 250,55 300,50 350,45 400,40" fill="none" stroke="#00A3FF" stroke-width="3" stroke-linecap="round"/>
+            <polyline points="0,100 50,95 100,105 150,90 200,95 250,85 300,82 350,80 400,78" fill="none" stroke="#00A3FF" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+            <circle cx="400" cy="40" r="5" fill="#00A3FF"/>
+          </svg>
+        </div>
+        <div class="chart-card">
+          <div class="chart-label">Glicose (mg/dL)</div>
+          <div class="chart-value green">104</div>
+          <svg class="chart-svg" viewBox="0 0 400 120">
+            <polyline points="0,90 50,70 100,80 150,50 200,65 250,45 300,55 350,40 400,35" fill="none" stroke="#00E08E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="0" y1="60" x2="400" y2="60" stroke="#F5B800" stroke-width="1" stroke-dasharray="8,6" opacity="0.4"/>
+            <circle cx="400" cy="35" r="5" fill="#00E08E"/>
+          </svg>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Alertas Ativos</div>
+          <div class="metric-value red">3</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Adesão</div>
+          <div class="metric-value green">87%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Pacientes</div>
+          <div class="metric-value blue">142</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">FC Média</div>
+          <div class="metric-value gold">72 bpm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

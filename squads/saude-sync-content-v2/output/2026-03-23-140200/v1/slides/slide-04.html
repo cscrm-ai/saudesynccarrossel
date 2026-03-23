@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 300px 80px 80px;
+  position: relative;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 84px; line-height: 1.1; text-align: center;
+  max-width: 900px; margin-bottom: 36px;
+}
+.dashboard {
+  background: #0D1420; border-radius: 24px; padding: 32px;
+  width: 100%; max-width: 860px; position: relative;
+}
+.dash-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px;
+}
+.dash-title {
+  font-size: 28px; color: rgba(255,255,255,0.35); text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.dash-status {
+  font-size: 24px; color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05);
+  padding: 8px 20px; border-radius: 20px;
+}
+.chart-area {
+  display: flex; align-items: flex-end; gap: 16px; height: 150px;
+  margin-bottom: 28px; padding: 0 10px;
+}
+.bar {
+  flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
+  min-height: 20px;
+}
+.question-mark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 160px; color: #FF4455; opacity: 0.4;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+}
+.data-fields {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.field {
+  background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px 24px;
+  height: 56px;
+}
+.body-text {
+  font-size: 38px; color: rgba(255,255,255,0.55); text-align: center;
+  max-width: 780px; line-height: 1.55; margin-top: 36px;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <h1 class="headline">Seu médico decide com base no que você lembra.</h1>
+
+  <div class="dashboard">
+    <div class="dash-header">
+      <span class="dash-title">Histórico do paciente</span>
+      <span class="dash-status">Sem dados</span>
+    </div>
+    <div class="chart-area">
+      <div class="bar" style="height: 30px"></div>
+      <div class="bar" style="height: 20px"></div>
+      <div class="bar" style="height: 25px"></div>
+      <div class="bar" style="height: 20px"></div>
+      <div class="bar" style="height: 35px"></div>
+      <div class="bar" style="height: 20px"></div>
+      <div class="bar" style="height: 22px"></div>
+      <div class="bar" style="height: 20px"></div>
+      <div class="bar" style="height: 28px"></div>
+      <div class="bar" style="height: 20px"></div>
+    </div>
+    <div class="question-mark">?</div>
+    <div class="data-fields">
+      <div class="field"></div>
+      <div class="field"></div>
+      <div class="field"></div>
+      <div class="field"></div>
+    </div>
+  </div>
+
+  <p class="body-text">Sem dados reais, o tratamento vira tentativa e erro. E quem paga o preço é você.</p>
+</body>
+</html>

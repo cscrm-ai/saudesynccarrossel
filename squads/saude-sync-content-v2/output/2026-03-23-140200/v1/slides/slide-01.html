@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding-top: 300px;
+  position: relative;
+}
+.pill-icon {
+  position: absolute; top: 80px; right: 90px; opacity: 0.18;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.08; text-align: center;
+  max-width: 900px; margin-bottom: 50px; z-index: 2;
+}
+.headline .accent { color: #00A3FF; }
+.ring-container {
+  position: relative; width: 340px; height: 340px; margin-bottom: 55px;
+}
+.ring-container svg { width: 100%; height: 100%; }
+.ring-label {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 80px; color: #00A3FF;
+}
+.body-text {
+  font-size: 40px; color: rgba(255,255,255,0.6); text-align: center;
+  max-width: 700px; line-height: 1.5;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <!-- Pill icon SVG -->
+  <svg class="pill-icon" width="90" height="90" viewBox="0 0 90 90" fill="none">
+    <rect x="15" y="30" width="60" height="30" rx="15" fill="#00A3FF" opacity="0.5"/>
+    <rect x="45" y="30" width="30" height="30" rx="15" fill="#00A3FF" opacity="0.8"/>
+  </svg>
+
+  <div class="ring-container">
+    <svg viewBox="0 0 340 340">
+      <circle cx="170" cy="170" r="145" stroke="#1a2030" stroke-width="22" fill="none"/>
+      <circle cx="170" cy="170" r="145" stroke="#00A3FF" stroke-width="22" fill="none"
+        stroke-dasharray="911" stroke-dashoffset="300" stroke-linecap="round"
+        transform="rotate(-90 170 170)"/>
+    </svg>
+    <div class="ring-label">67%</div>
+  </div>
+
+  <h1 class="headline">Você sabe sua <span class="accent">taxa de adesão</span> ao tratamento?</h1>
+
+  <p class="body-text">A maioria dos pacientes não faz ideia.</p>
+</body>
+</html>

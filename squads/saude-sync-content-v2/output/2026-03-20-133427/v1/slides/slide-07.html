@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  background: #0D1420; color: #F0F2F5;
+  position: relative;
+}
+.content {
+  padding: 72px 64px;
+  display: flex; flex-direction: column;
+  height: 100%;
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.12;
+  margin-bottom: 32px;
+}
+h1 .blue { color: #00A3FF; }
+.body-text {
+  font-size: 40px; line-height: 1.65;
+  margin-bottom: 56px;
+}
+.chat-area {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; gap: 28px;
+  max-width: 850px;
+}
+.chat-bubble {
+  padding: 32px 40px; border-radius: 24px;
+  font-size: 36px; line-height: 1.5;
+  max-width: 80%;
+}
+.bubble-user {
+  background: #162032; align-self: flex-end;
+  border-bottom-right-radius: 6px;
+  color: #F0F2F5;
+}
+.bubble-doctor {
+  background: #0A2A4A; align-self: flex-start;
+  border-bottom-left-radius: 6px;
+  color: #00A3FF;
+  border: 1px solid rgba(0,163,255,0.2);
+}
+.lock-row {
+  display: flex; align-items: center; gap: 16px;
+  align-self: center; margin-top: 24px;
+}
+.lock-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(245,184,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+}
+.lock-icon svg { width: 24px; height: 24px; }
+.lock-label {
+  font-size: 28px; color: #F5B800;
+}
+</style>
+</head>
+<body>
+<div class="content">
+  <h1><span class="blue">Chat</span> com seu médico. Quando precisar.</h1>
+  <div class="body-text">
+    Tire dúvidas sem aguardar retorno.<br>
+    Seu time de saúde responde.<br>
+    Seguro, privado, rápido.
+  </div>
+  <div class="chat-area">
+    <div class="chat-bubble bubble-user">Doutor, minha pressão subiu para 15/9. Devo me preocupar?</div>
+    <div class="chat-bubble bubble-doctor">Fique tranquilo. Vamos ajustar a medicação. Monitore novamente em 2h e me avise.</div>
+    <div class="lock-row">
+      <div class="lock-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F5B800" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <span class="lock-label">Criptografia de ponta a ponta</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

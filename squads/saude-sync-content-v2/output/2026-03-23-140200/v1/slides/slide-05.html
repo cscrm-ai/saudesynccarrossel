@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 80px;
+  padding-top: 300px;
+}
+.gradient-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(255,68,85,0.1) 0%, rgba(10,14,23,1) 40%, rgba(10,14,23,1) 60%, rgba(0,163,255,0.2) 100%);
+}
+.glow {
+  position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,163,255,0.15) 0%, transparent 70%);
+}
+.content { position: relative; z-index: 2; text-align: center; }
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 86px; line-height: 1.1;
+  max-width: 900px; margin-bottom: 50px;
+}
+.timeline {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  margin-bottom: 60px; width: 100%; max-width: 800px;
+}
+.dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot.off { background: rgba(255,68,85,0.4); }
+.dot.on { background: #00A3FF; box-shadow: 0 0 20px rgba(0,163,255,0.6); }
+.dot.trans { background: rgba(255,255,255,0.15); }
+.line {
+  height: 4px; flex: 1;
+}
+.line.off { background: rgba(255,68,85,0.2); }
+.line.on { background: rgba(0,163,255,0.5); }
+.line.trans { background: rgba(255,255,255,0.08); }
+.body-text {
+  font-size: 40px; color: rgba(255,255,255,0.6);
+  max-width: 750px; line-height: 1.55; margin: 0 auto;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <div class="gradient-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <h1 class="headline">E se existisse um jeito de saber — de verdade?</h1>
+
+    <div class="timeline">
+      <div class="dot off"></div>
+      <div class="line off"></div>
+      <div class="dot off"></div>
+      <div class="line off"></div>
+      <div class="dot trans"></div>
+      <div class="line trans"></div>
+      <div class="dot trans"></div>
+      <div class="line on"></div>
+      <div class="dot on"></div>
+      <div class="line on"></div>
+      <div class="dot on"></div>
+    </div>
+
+    <p class="body-text">Sem depender da memória. Sem achismos. Com dados reais de cada dose.</p>
+  </div>
+</body>
+</html>

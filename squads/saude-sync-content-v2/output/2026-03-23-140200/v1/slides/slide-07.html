@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 300px 70px 60px;
+  position: relative;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 72px; line-height: 1.1; text-align: center;
+  max-width: 900px; margin-bottom: 45px;
+}
+.dashboard { width: 100%; max-width: 920px; }
+.chart-section {
+  background: #0D1420; border-radius: 20px; padding: 36px 40px;
+  margin-bottom: 24px;
+}
+.chart-label {
+  font-size: 24px; color: rgba(255,255,255,0.35); text-transform: uppercase;
+  letter-spacing: 2px; margin-bottom: 24px;
+}
+.chart-bars {
+  display: flex; align-items: flex-end; gap: 6px; height: 180px;
+}
+.chart-bar { flex: 1; border-radius: 4px 4px 0 0; min-height: 8px; }
+.chart-bar.green { background: #00E08E; }
+.chart-bar.yellow { background: #F5B800; }
+.chart-bar.red { background: #FF4455; }
+.chart-bar.empty { background: rgba(255,255,255,0.04); }
+.stats-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #0D1420; border-radius: 20px; padding: 30px 24px;
+  text-align: center;
+}
+.stat-value {
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 52px; margin-bottom: 8px;
+}
+.stat-value.green { color: #00E08E; }
+.stat-value.yellow { color: #F5B800; }
+.stat-value.red { color: #FF4455; }
+.stat-label { font-size: 26px; color: rgba(255,255,255,0.4); }
+.rate-section {
+  background: #0D1420; border-radius: 20px; padding: 36px;
+  display: flex; align-items: center; gap: 36px;
+}
+.rate-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; }
+.rate-ring svg { width: 100%; height: 100%; }
+.rate-ring-label {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 36px; color: #00A3FF;
+}
+.rate-info { flex: 1; }
+.rate-title {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 36px; margin-bottom: 8px;
+}
+.rate-sub { font-size: 28px; color: rgba(255,255,255,0.45); }
+.body-text {
+  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 30px; color: rgba(255,255,255,0.5); text-align: center;
+  margin-top: 24px;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <h1 class="headline">Sua taxa de adesão dos últimos 30 dias.</h1>
+
+  <div class="dashboard">
+    <div class="chart-section">
+      <div class="chart-label">Últimos 30 dias</div>
+      <div class="chart-bars">
+        <div class="chart-bar green" style="height:90%"></div>
+        <div class="chart-bar green" style="height:95%"></div>
+        <div class="chart-bar green" style="height:85%"></div>
+        <div class="chart-bar yellow" style="height:60%"></div>
+        <div class="chart-bar green" style="height:100%"></div>
+        <div class="chart-bar green" style="height:90%"></div>
+        <div class="chart-bar red" style="height:30%"></div>
+        <div class="chart-bar green" style="height:95%"></div>
+        <div class="chart-bar green" style="height:88%"></div>
+        <div class="chart-bar green" style="height:92%"></div>
+        <div class="chart-bar yellow" style="height:55%"></div>
+        <div class="chart-bar green" style="height:100%"></div>
+        <div class="chart-bar green" style="height:90%"></div>
+        <div class="chart-bar green" style="height:85%"></div>
+        <div class="chart-bar red" style="height:25%"></div>
+        <div class="chart-bar green" style="height:95%"></div>
+        <div class="chart-bar green" style="height:90%"></div>
+        <div class="chart-bar green" style="height:100%"></div>
+        <div class="chart-bar yellow" style="height:65%"></div>
+        <div class="chart-bar green" style="height:92%"></div>
+        <div class="chart-bar green" style="height:88%"></div>
+        <div class="chart-bar green" style="height:95%"></div>
+        <div class="chart-bar red" style="height:20%"></div>
+        <div class="chart-bar green" style="height:90%"></div>
+        <div class="chart-bar green" style="height:100%"></div>
+        <div class="chart-bar green" style="height:85%"></div>
+        <div class="chart-bar green" style="height:92%"></div>
+        <div class="chart-bar green" style="height:95%"></div>
+        <div class="chart-bar green" style="height:88%"></div>
+        <div class="chart-bar green" style="height:90%"></div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value green">24</div>
+        <div class="stat-label">Tomados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value yellow">3</div>
+        <div class="stat-label">Atrasados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value red">3</div>
+        <div class="stat-label">Esquecidos</div>
+      </div>
+    </div>
+
+    <div class="rate-section">
+      <div class="rate-ring">
+        <svg viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="58" stroke="#1a2030" stroke-width="14" fill="none"/>
+          <circle cx="70" cy="70" r="58" stroke="#00A3FF" stroke-width="14" fill="none"
+            stroke-dasharray="364.4" stroke-dashoffset="72.9" stroke-linecap="round"
+            transform="rotate(-90 70 70)"/>
+        </svg>
+        <div class="rate-ring-label">80%</div>
+      </div>
+      <div class="rate-info">
+        <div class="rate-title">Taxa de Adesão</div>
+        <div class="rate-sub">Dados atualizados em tempo real</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">Tomados: 24 · Atrasados: 3 · Esquecidos: 3</p>
+</body>
+</html>

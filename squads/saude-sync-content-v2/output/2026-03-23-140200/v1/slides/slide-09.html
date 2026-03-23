@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1350">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: #0A0E17; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding: 0 80px 120px;
+}
+.bg-image {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10,14,23,0.75);
+}
+.content {
+  position: relative; z-index: 2;
+  text-align: center;
+}
+.headline {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 88px; line-height: 1.1;
+  max-width: 900px; margin-bottom: 50px;
+}
+.body-text {
+  font-size: 44px; color: #00A3FF;
+  max-width: 750px; line-height: 1.5;
+  margin: 0 auto;
+}
+.brand-logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: auto;
+  filter: brightness(2.5) contrast(1.2);
+  z-index: 100;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <img src="../../../../assets/logo-saudesync.svg" class="brand-logo" alt="Saúde Sync">
+
+  <img class="bg-image" src="generated-images/slide-09-background.png" alt="background">
+  <div class="overlay"></div>
+  <div class="content">
+    <h1 class="headline">Entre uma consulta e outra, quem cuida de você?</h1>
+    <p class="body-text">O Saúde Sync cuida.<br>Todos os dias. Dose por dose.</p>
+  </div>
+</body>
+</html>
