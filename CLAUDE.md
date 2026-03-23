@@ -27,6 +27,10 @@ Type `/opensquad` to open the main menu, or use any of these commands:
 5. Agents communicate via persona switching (inline) or subagents (background)
 6. Checkpoints pause execution for user input/approval
 
+## Shortcuts
+
+- `/carrossel` — Dispara o pipeline `saude-sync-content-v2` imediatamente com checkpoints via Telegram. Equivale a `/opensquad run saude-sync-content-v2`. Use a qualquer hora do dia.
+
 ## Rules
 
 - Always use `/opensquad` commands to interact with the system
