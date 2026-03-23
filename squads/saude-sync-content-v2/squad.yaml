@@ -129,7 +129,7 @@ squad:
     memory_file: _memory/memories.md
 
   interaction:
-    channel: terminal
+    channel: telegram
     telegram:
       notify_on_step: true
       send_album: true

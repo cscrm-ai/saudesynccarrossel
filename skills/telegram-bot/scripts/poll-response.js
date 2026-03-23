@@ -50,11 +50,18 @@ async function main() {
   const timeoutMs = args.timeout * 1000;
   let offset = 0;
 
-  // Get initial offset to skip old updates
-  const initRes = await fetch(`${API}/getUpdates?limit=1&offset=-1`);
+  // Get initial offset: peek at pending updates without consuming them.
+  // We use offset=0 to fetch ALL pending, then set our offset to the first one
+  // so we don't miss any clicks that arrived before the script started.
+  const initRes = await fetch(`${API}/getUpdates`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ limit: 1, timeout: 0, allowed_updates: args.mode === 'callback' ? ['callback_query'] : ['message'] }),
+  });
   const initData = await initRes.json();
   if (initData.ok && initData.result.length > 0) {
-    offset = initData.result[0].update_id + 1;
+    // Start from the first pending update (don't skip it)
+    offset = initData.result[0].update_id;
   }
 
   while (Date.now() - startTime < timeoutMs) {
