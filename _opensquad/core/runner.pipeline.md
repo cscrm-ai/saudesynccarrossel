@@ -254,21 +254,87 @@ Apply this transformation consistently for every write in this step.
 - Save output to the specified output file
 
 #### If `type: checkpoint`
+
+**1. Determine interaction channel:**
+- Read the squad YAML file (path from squad config)
+- Check `squad.interaction.channel` value
+- If not present or `terminal`: use terminal mode (current behavior)
+- If `telegram`: use Telegram mode
+
+**2a. Terminal mode (default — current behavior):**
 - Present the checkpoint message to the user
 - If the checkpoint requires a choice (numbered list), present options as a numbered list and tell the user to reply with a number
 - Wait for user input before proceeding
 - Save the user's choice/response for the next step
 - **If the step frontmatter contains `outputFile`**: after collecting the user's full response,
   write it to the specified file using the Write tool before moving to the next step.
-  Use this format:
-  ```
-  # Research Focus
 
-  **Topic:** {user's typed topic}
-  **Time Range:** {selected time range label, e.g., "Últimos 7 dias"}
-  **Date:** {today's date in YYYY-MM-DD format}
-  ```
-  This file is the `inputFile` for the researcher step that follows.
+**2b. Telegram mode:**
+- Read the checkpoint markdown file to extract:
+  - The question text (everything after the `---` separator)
+  - The options (if numbered or bulleted list present)
+- Determine the checkpoint type:
+  - **Selection checkpoint** (steps 02, 04): has numbered options → send as inline buttons
+  - **Approval checkpoint** (steps 07, 12, 14): binary approve/reject → send 2 buttons
+  - **Visual checkpoint** (step 12): has associated slide images → send album first
+
+- **For selection checkpoints:**
+  1. Build button data from the agent's output (e.g., pauta titles from `pautas-propostas.md`)
+  2. Run: `node --env-file=.env skills/telegram-bot/scripts/send-message.js --text "{question}" --buttons '{json_buttons}'`
+  3. Capture `message_id` from stdout
+  4. Run: `node --env-file=.env skills/telegram-bot/scripts/poll-response.js --mode callback --timeout 600 --message-id {message_id}`
+  5. If result is `NO_RESPONSE`: re-invoke poll-response.js (loop up to `timeout_pause` from squad config)
+  6. Parse the callback_data to determine user's selection
+
+- **For step-04 (two-stage: angle + tone):**
+  1. Send angle selection buttons (5 buttons)
+  2. Poll for angle response
+  3. Send tone selection buttons (6 buttons: Educativo, Inspirador, Direto, Empático, Técnico, Bem-humorado)
+  4. Poll for tone response
+  5. Combine both into the checkpoint output
+
+- **For visual checkpoint (step-12):**
+  1. First send the album: `node --env-file=.env skills/telegram-bot/scripts/send-album.js --images "{comma_separated_jpeg_paths}"`
+  2. Then send the approval message with buttons
+  3. If user selects "Pedir Ajustes":
+     a. Send follow-up: "Descreva os ajustes necessários (número do slide + o que mudar):"
+     b. Switch to text polling: `node --env-file=.env skills/telegram-bot/scripts/poll-response.js --mode text --timeout 600`
+     c. Capture free-text response
+
+- **For approval checkpoints (steps 07, 14):**
+  1. Build summary text from the agent's output
+  2. Send with 2 buttons: `[{"text":"✅ Aprovar","data":"approve"},{"text":"✏️ Solicitar Ajustes","data":"adjust"}]`
+  3. Poll for response
+  4. If user selects "adjust" (step 07 or 14):
+     a. Send follow-up: "Descreva os ajustes necessários:"
+     b. Switch to text polling: `poll-response.js --mode text --timeout 600`
+     c. Capture free-text response and save to outputFile
+
+- **Fallback to terminal (all Telegram checkpoints):**
+  - If any Telegram API call fails after 3 retries (via `fetchWithRetry`), log the error
+  - Fall back to terminal mode: use `AskUserQuestion` as if `channel == terminal`
+  - Send a Telegram notification (best-effort) saying "⚠️ Telegram indisponível, checkpoint movido pro terminal"
+  - This ensures the pipeline never gets stuck due to Telegram API outages
+
+- **Timeout handling (applies to all Telegram checkpoints):**
+  - The runner invokes poll-response.js in a loop with 600-second chunks
+  - Track elapsed time across invocations
+  - At `timeout_reminder` (4h default): send reminder via send-message.js
+  - At `timeout_pause` (8h default):
+    1. Write `run-state.json` to the squad directory (see Pipeline State Persistence)
+    2. Send Telegram message: "⏸️ Pipeline pausado. Responda quando quiser retomar."
+    3. Stop pipeline execution (exit gracefully)
+
+- **After receiving response (either channel):**
+  - Save the user's choice/response to the step's `outputFile` (if specified in frontmatter)
+  - Use the same output format as terminal mode
+  - Continue to next step
+
+**3. Send progress notification (Telegram mode only):**
+- After each non-checkpoint step completes, if `interaction.channel == telegram` and `telegram.notify_on_step == true`:
+- Run: `node --env-file=.env skills/telegram-bot/scripts/send-message.js --text "✅ Step {N}/{total} — {agent_name} concluiu {step_label}\nPróximo: {next_agent}\n⏱️ ~{est_minutes} min" --buttons '[{"text":"❌ Cancelar pipeline","data":"cancel_pipeline"}]'`
+- Check for cancel: run a quick poll (5-second timeout) to see if user pressed cancel
+- If cancel detected: save run-state.json with status "cancelled", send confirmation, stop pipeline
 
 ### Veto Condition Enforcement
 
@@ -287,6 +353,45 @@ After an agent completes a step (before moving to the next step):
 
 This creates an internal quality loop BEFORE the reviewer sees the content,
 catching obvious issues early and reducing review cycle waste.
+
+### Pipeline State Persistence (run-state.json)
+
+When the pipeline needs to pause (Telegram timeout, user cancel, session close), save a `run-state.json` file in the squad directory:
+
+**Write path:** `squads/{squad-name}/run-state.json`
+
+**Schema:**
+```json
+{
+  "run_id": "{YYYY-MM-DD-HHmmss}",
+  "squad": "{squad-name}",
+  "current_step": 12,
+  "status": "paused_at_checkpoint",
+  "checkpoint_data": {
+    "step-02": { "file": "pipeline/data/pauta-selecionada.md", "completed": true },
+    "step-04": { "file": "pipeline/data/angulo-selecionado.md", "completed": true },
+    "step-07": { "file": "pipeline/data/aprovacao-conteudo.md", "completed": true },
+    "step-12": { "file": "pipeline/data/aprovacao-visual.md", "completed": false },
+    "step-14": { "file": "pipeline/data/decisao-publicacao.md", "completed": false }
+  },
+  "completed_outputs": ["output/{run_id}/v1/pautas-propostas.md"],
+  "paused_at": "2026-03-23T13:25:00-03:00",
+  "telegram_pending_message_id": null
+}
+```
+
+**Resume flow (at pipeline start):**
+
+1. Before starting a new run, check for `squads/{squad-name}/run-state.json`
+2. If found:
+   - Read the file and check `status`
+   - If `status == "paused_at_checkpoint"` or `status == "paused_timeout"`:
+     - If `interaction.channel == telegram`: send Telegram message "Pipeline de {date} pausou no step {N}. Retomar?" with buttons [Retomar] [Cancelar]
+     - If user selects "Retomar": skip to `current_step`, using saved checkpoint data
+     - If user selects "Cancelar": delete `run-state.json`, start fresh
+   - If `status == "cancelled"`: delete `run-state.json`, start fresh
+3. If not found: start normal pipeline execution
+4. After pipeline completes successfully: delete `run-state.json`
 
 ### Review Loops
 
