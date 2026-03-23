@@ -1,0 +1,20 @@
+[Unit]
+Description=SaúdeSync Telegram Bot + Claude Code Pipeline
+After=network.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/saudesynccarrossel
+ExecStart=/bin/bash /root/saudesynccarrossel/run-bot.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=saudesync-bot
+Environment=HOME=/root
+Environment=PATH=/root/.npm-global/bin:/root/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target

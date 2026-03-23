@@ -1,0 +1,11 @@
+[Unit]
+Description=SaúdeSync Daily Pipeline Trigger
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/saudesynccarrossel
+ExecStart=/bin/bash -c 'cd /root/saudesynccarrossel && node --env-file=.env skills/telegram-bot/scripts/send-message.js --text "☀️ Bom dia! Hora de criar o carrossel de hoje." && claude -p "/carrossel" --yes 2>&1 | tee -a /root/saudesynccarrossel/logs/daily-$(date +%%Y%%m%%d).log'
+Environment=HOME=/root
+Environment=PATH=/root/.npm-global/bin:/root/.local/bin:/usr/local/bin:/usr/bin:/bin
